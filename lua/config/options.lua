@@ -1,3 +1,9 @@
+vim.o.winborder = 'rounded'
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  update_in_insert = false,
+})
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
