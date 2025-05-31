@@ -29,6 +29,12 @@ keymaps = {
     ["g."] = { "actions.toggle_hidden", mode = "n" },
     ["g\\"] = { "actions.toggle_trash", mode = "n" },
   },
+    view_options = {
+        sort = {
+            { "mtime", "desc" },
+            { "name", "asc" },
+        },
+    },
   },
   dependencies = { "nvim-tree/nvim-web-devicons" },
   -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
