@@ -1,17 +1,4 @@
-return {
-  'stevearc/oil.nvim',
-  ---@module 'oil'
-  ---@type oil.SetupOpts
-  opts = {
-skip_confirm_for_simple_edits = true,
-
-    columns = {
-      'icon',
-      -- "permissions",
-      'size',
-      -- "mtime",
-    },
-keymaps = {
+local keymaps = {
     ["g?"] = { "actions.show_help", mode = "n" },
     ["<CR>"] = "actions.select",
     ["<C-s>"] = { "actions.select", opts = { vertical = true } },
@@ -28,7 +15,44 @@ keymaps = {
     ["gx"] = "actions.open_external",
     ["g."] = { "actions.toggle_hidden", mode = "n" },
     ["g\\"] = { "actions.toggle_trash", mode = "n" },
-  },
+}
+
+if vim.fn.executable("dragon-drop") == 1 then
+    keymaps["gd"] = {
+        callback = function(bufnr)
+            local oil = require("oil")
+            local entry = oil.get_cursor_entry()
+
+            if not entry or not entry.name then
+                vim.notify("No file selected for drag", vim.log.levels.WARN)
+                return
+            end
+
+            local path = oil.get_current_dir(bufnr)
+            local cmd = 'dragon-drop ' .. vim.fn.shellescape(path .. entry.name)
+            vim.notify("Dragging file: " .. path .. entry.name, vim.log.levels.INFO)
+            vim.fn.system(cmd)
+        end,
+        -- TODO: Implement refactor for visual mode
+        nowait = true,
+        mode = {"n"},
+        desc = "Drag file with dragon-drop"
+    }
+end
+return {
+  'stevearc/oil.nvim',
+  ---@module 'oil'
+  ---@type oil.SetupOpts
+  opts = {
+skip_confirm_for_simple_edits = true,
+
+    columns = {
+      'icon',
+      -- "permissions",
+      'size',
+      -- "mtime",
+    },
+keymaps = keymaps,
     view_options = {
         sort = {
             { "mtime", "desc" },
