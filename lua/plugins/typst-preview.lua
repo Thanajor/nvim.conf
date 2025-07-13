@@ -5,5 +5,9 @@ return {
 	opts = {
 		open_cmd = nil,
 		port = 5555,
+		dependencies_bin = {
+			['tinymist'] = 'tinymist',
+			['websocat'] = 'websocat',
+		},
 	}, -- lazy.nvim will implicitly calls `setup {}`
 }
