@@ -1,3 +1,5 @@
+vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+-- vim.o.formatexpr = "v:lua.vim.lsp.formatexpr()"
 vim.o.winborder = 'rounded'
 vim.diagnostic.config({
   virtual_text = true,
