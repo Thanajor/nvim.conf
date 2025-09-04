@@ -2,7 +2,10 @@ return {
 	filetypes = {'typst'},
 	cmd = {'tinymist'},
 	settings = {
-		exportPdf = 'onDocumentHasTitle',
-		-- formatterMode = "typstyle",
+		exportPdf = 'onSave',
+		formatterMode = "typstyle",
+		lint = {
+			enable = true,
+		},
 	}
 }
