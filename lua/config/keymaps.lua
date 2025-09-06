@@ -7,6 +7,7 @@ vim.keymap.set('n', 'gK', function()
   vim.diagnostic.config({ virtual_lines = new_config })
 end, { desc = 'Toggle diagnostic virtual_lines' })
 
+vim.keymap.set('n', '<A-k>', vim.diagnostic.open_float, { desc = "Show diagnostics popup" })
 vim.keymap.set('i', 'jk', '<Esc>')
 -- Clear highlights on search when pressing <Esc> in normal mode
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
