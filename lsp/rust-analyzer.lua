@@ -16,7 +16,7 @@ return {
 			---@class LspResponse
 			---@field err? lsp.ResponseError
 			---@field result ExternalDocsResponse | string
-			local resp = client:request_sync("experimental/externaldocs", params, nil, bufnr)
+			local resp = client:request_sync("experimental/externalDocs", params, nil, bufnr)
 
 			if not resp then
 				return false
